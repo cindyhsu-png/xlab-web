@@ -1115,6 +1115,19 @@ section:not(#plans):hover .streak::before,section:not(#plans):hover .streak::aft
   *{animation:none!important;transition:none!important}
 }
 
+/* ---------- 全站禁止水平捲動（手機版 x-scroll 修正） ---------- */
+html,body{overflow-x:clip}
+
+/* ---------- CTA 次要按鈕：與 LINE 按鈕同尺寸、存在感加強 ---------- */
+.pill--cta{
+  padding:15px 36px;font-size:13px;font-weight:600;letter-spacing:.08em;
+  color:var(--ink);border-color:rgba(111,211,255,.5);
+}
+.pill--cta:hover,.pill--cta:focus-visible{
+  color:var(--glow);border-color:var(--glow);
+  box-shadow:0 0 0 3px rgba(111,211,255,.09),0 12px 30px -14px rgba(111,211,255,.35);
+}
+
 /* ---------- 主標斷行：同一句不拆行（02/03 區 camp-top 標題） ---------- */
 @media (min-width:1081px){
   .camp-top h2.big{font-size:clamp(26px,3.35vw,50px)}
@@ -1201,9 +1214,8 @@ section:not(#plans):hover .streak::before,section:not(#plans):hover .streak::aft
       <span class="t1" aria-hidden="true">X</span><span class="t2" aria-hidden="true">LAB</span>
     </h1>
 
-    <div class="corner corner--tl">AI 實驗室<b>台北・中正</b></div>
+    <div class="corner corner--tl">AI 實驗室</div>
     <div class="corner corner--bl">學習加速器 · 共學計畫<b>實戰演練 × 課程影片</b></div>
-    <div class="corner corner--br">台北市中正區<b>開封街一段 6 號</b></div>
     <div class="corner corner--bc">開啟智慧時代引擎<span class="scroll-cue">▼ 向下</span></div>
 
   </div>
@@ -1645,7 +1657,7 @@ section:not(#plans):hover .streak::before,section:not(#plans):hover .streak::aft
 
   <div class="wrap">
     <div class="btn-row reveal" style="justify-content:center">
-      <a class="pill" href="https://www.xlab.com.tw/events" target="_blank" rel="noopener">看最新活動</a>
+      <a class="pill pill--cta" href="https://www.xlab.com.tw/events" target="_blank" rel="noopener">看最新活動</a>
     </div>
   </div>
 </section>
@@ -1702,7 +1714,7 @@ section:not(#plans):hover .streak::before,section:not(#plans):hover .streak::aft
       </div>
       <div class="btn-row reveal d1" style="margin:0">
         <a class="btn-line" href="https://line.me/R/ti/p/@549pfwsc?oat_content=url&amp;ts=05031430" target="_blank" rel="noopener"><span>加入官方 LINE</span></a>
-        <a class="pill pill--ghost" href="https://www.xlab.com.tw/events" target="_blank" rel="noopener">看最新活動</a>
+        <a class="pill pill--cta" href="https://www.xlab.com.tw/events" target="_blank" rel="noopener">看最新活動</a>
       </div>
     </div>
 
