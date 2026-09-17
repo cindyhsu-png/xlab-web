@@ -18,7 +18,7 @@
   // 🔴 去 Google Analytics 開一個 GA4 資源，把評估 ID（G- 開頭）貼在這裡。
   //    四站可以共用同一個 ID —— GA4 會用 page_location 的網域自動分開。
   //    沒填也不會壞：事件照樣記進 window.__mojiEvents，只是不送出去。
-  var GA_ID = '';
+  var GA_ID = 'G-Y3V2G0L41K';
 
   var DNT = navigator.doNotTrack === '1' || window.doNotTrack === '1';
   var buf = (window.__mojiEvents = []);
