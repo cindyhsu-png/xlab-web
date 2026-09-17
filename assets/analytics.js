@@ -72,14 +72,22 @@
     // 哪些區塊真的被看到 —— 這是「模組區的有幾成看得到」的答案。
     if ('IntersectionObserver' in window) {
       var seen = {};
+      // ⚠️ 不能用固定的 threshold 比例。2026-09-18 在 nova-web 實測抓到：
+      //    「露出自身高度 35%」對很高的區塊永遠成立不了 —— map 高 4,548px、
+      //    視窗只有 768px，35% 是 1,592px，塞不下，那一區永遠不會被算成看過。
+      //    而且是靜默的：報表上就是 0，不會有任何錯誤。
+      // 改成看「實際露出幾個像素」，門檻取『自身 35%』與『半個視窗』的較小者。
       var io = new IntersectionObserver(function (rows) {
         rows.forEach(function (r) {
           var id = r.target.id;
           if (!r.isIntersecting || !id || seen[id]) return;
+          var visible = r.intersectionRect.height;
+          var need = Math.min(r.boundingClientRect.height * 0.35, window.innerHeight * 0.5);
+          if (visible < need) return;
           seen[id] = 1;
           send('section_view', { section: id });
         });
-      }, { threshold: 0.35 });
+      }, { threshold: [0, 0.1, 0.25, 0.35, 0.5, 0.75, 1] });
       document.querySelectorAll('section[id]').forEach(function (el) { io.observe(el); });
     }
 
